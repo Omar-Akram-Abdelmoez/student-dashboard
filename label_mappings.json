@@ -1,0 +1,47 @@
+{
+    "TransportMeans": {
+        "0": "private",
+        "1": "school_bus"
+    },
+    "ParentEduc": {
+        "0": "associate's degree",
+        "1": "bachelor's degree",
+        "2": "high school",
+        "3": "master's degree",
+        "4": "some college",
+        "5": "some high school"
+    },
+    "LunchType": {
+        "0": "free/reduced",
+        "1": "standard"
+    },
+    "TestPrep": {
+        "0": "completed",
+        "1": "none"
+    },
+    "ParentMaritalStatus": {
+        "0": "divorced",
+        "1": "married",
+        "2": "single",
+        "3": "widowed"
+    },
+    "PracticeSport": {
+        "0": "never",
+        "1": "regularly",
+        "2": "sometimes"
+    },
+    "IsFirstChild": {
+        "0": "no",
+        "1": "yes"
+    },
+    "NrSiblings": {
+        "0": "0",
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7"
+    }
+}
