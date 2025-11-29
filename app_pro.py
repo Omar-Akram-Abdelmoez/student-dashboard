@@ -9,8 +9,8 @@ import plotly.graph_objects as go
 import pickle
 import numpy as np
 import json
-import requests
 import os
+import gdown
 
 # ------------------- Load Data -------------------
 @st.cache_data
@@ -22,23 +22,21 @@ student_ids = data['student_id'].unique()
 
 # ------------------- Load ML Model + Label Mappings -------------------
 MODEL_PATH = "student_multi_model.pkl"
-MODEL_URL = "https://drive.google.com/uc?export=download&id=1PoS263lSD3NU8U83j6Hf90-2LvMZYwbT"
+MODEL_URL = "https://drive.google.com/uc?id=1PoS263lSD3NU8U83j6Hf90-2LvMZYwbT"  # رابط Google Drive قابل للتحميل مباشرة
 
 @st.cache_data
 def load_model_and_labels():
     # تحميل الموديل من Google Drive لو مش موجود
     if not os.path.exists(MODEL_PATH):
-        st.write("Downloading model from Google Drive...")
-        r = requests.get(MODEL_URL, allow_redirects=True)
-        with open(MODEL_PATH, "wb") as f:
-            f.write(r.content)
-        st.write("Model downloaded successfully!")
+        st.info("Downloading model from Google Drive...")
+        gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
+        st.success("Model downloaded successfully!")
 
     # فتح الموديل
     with open(MODEL_PATH, "rb") as f:
         model = pickle.load(f)
 
-    # تحميل الـ label mappings من GitHub repo (ملف صغير)
+    # تحميل الـ label mappings
     with open("label_mappings.json", "r", encoding="utf-8") as f:
         label_mappings = json.load(f)
 
@@ -132,7 +130,7 @@ with tab3:
     st.plotly_chart(fig_att, use_container_width=True)
     st.info("Attendance is a major factor in improving academic performance 🚀")
 
-# ------------------- Tab 5: Insights -------------------
+# =================== Tab 5: Insights ===================
 with tab5:
     st.header("📊 Global Insights Summary")
 
